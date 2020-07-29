@@ -1,16 +1,9 @@
-// Assignment 1 19T3 COMP1511: CS Paint
-// paint.c
-//
-// This program was written by William (z5268184)
-// on 15th October
-//
-// Version 1.0.0 (2019-10-08): Assignment released.
 
+// This program was written by William Djong
 #include <stdio.h>
 #define EXIT_PROGRAM 0
 
-// Note: you may find the square root function (sqrt) from the math
-// library useful for drawing ellipses in Stage 3 and Stage 4.
+
 #include <math.h>
 
 // The dimensions of the canvas (20 rows x 36 columns).
@@ -24,10 +17,9 @@
 #define GREY 2
 #define LIGHT 3
 
-// IF YOU NEED MORE #defines ADD THEM HERE
 
 
-// Provided helper functions:
+
 // Display the canvas.
 void displayCanvas(int canvas[N_ROWS][N_COLS]);
 
@@ -35,8 +27,6 @@ void displayCanvas(int canvas[N_ROWS][N_COLS]);
 void clearCanvas(int canvas[N_ROWS][N_COLS]);
 
 // Calculate the distance between two points.
-// Note: you will only need this function for the Draw Ellipse command
-// in Stages 3 and 4.
 double distance(int row1, int col1, int row2, int col2);
 
 //drawing a line function
@@ -591,12 +581,9 @@ void copyCanvas(int start_row, int start_col, int length, int direction, int can
 void pasteCanvas(int start_row, int start_col, int length, int direction, int canvas[N_ROWS][N_COLS], int temp[N_ROWS][N_COLS], int target_row, int target_col){
     int j = 0; //counter 1 to loop through row
     int n = 0; //counter 2 to loop through column
-    //int temp[N_ROWS][N_COLS];
     outOfbound(start_row, start_col, length, direction, canvas);
-    //clearCanvas(temp);
     if (outOfbound(start_row, start_col, length, direction, canvas) == 0){
-    //this if statement is just to show what will happen if outofbound is true, it will do nothing!!!
-    }else if (outOfbound(start_row, start_col, length, direction, canvas) == 1){                  
+    } else if (outOfbound(start_row, start_col, length, direction, canvas) == 1){                  
         while (j < length) { 
             if (direction % 360 == 45 || direction == 45) {             
                 while (n < length) { 
@@ -757,8 +744,6 @@ void drawEllipse(int focus_1_row, int focus_1_col, int focus_2_row, int focus_2_
 
 // Displays the canvas, by printing the integer value stored in
 // each element of the 2-dimensional canvas array.
-//
-// You should not need to change the displayCanvas function.
 void displayCanvas(int canvas[N_ROWS][N_COLS]) {
     int row = 0;
     while (row < N_ROWS) {
@@ -776,8 +761,6 @@ void displayCanvas(int canvas[N_ROWS][N_COLS]) {
 // Sets the entire canvas to be blank, by setting each element in the
 // 2-dimensional canvas array to be WHITE (which is #defined at the top
 // of the file).
-//
-// You should not need to change the clearCanvas function.
 void clearCanvas(int canvas[N_ROWS][N_COLS]) {
     int row = 0;
     while (row < N_ROWS) {
@@ -791,8 +774,6 @@ void clearCanvas(int canvas[N_ROWS][N_COLS]) {
 }
 
 // Calculate the distance between two points (row1, col1) and (row2, col2).
-// Note: you will only need this function for the Draw Ellipse command
-// in Stages 3 and 4.
 double distance(int row1, int col1, int row2, int col2) {
     int row_dist = row2 - row1;
     int col_dist = col2 - col1;
